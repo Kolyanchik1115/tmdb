@@ -1,6 +1,6 @@
 # tmdb
 
-A new Flutter project.
+This project will be updated soon
 
 ## Getting Started
 
