@@ -1,5 +1,6 @@
 abstract class MainNavigationRoutesNames {
-  static const loaderWidget = '/';
+  static const splashScreen = '/';
+  static const loaderWidget = '/loader';
   static const auth = '/auth';
   static const mainScreen = '/main_screen';
   static const movieDetails = '/main_screen/movie_details';

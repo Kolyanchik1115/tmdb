@@ -3,6 +3,7 @@ import 'package:tmdb/ui/naviagation/main_navigation_routes_name.dart';
 import 'package:tmdb/ui/widgets/app/my_app.dart';
 
 abstract class ScreenFactory {
+  Widget makeSplashScreen();
   Widget makeLoader();
   Widget makeAuth();
   Widget makeMainScreen();
@@ -18,6 +19,8 @@ class MainNavigation implements MyAppNavigation {
 
   @override
   Map<String, Widget Function(BuildContext)> get routes => {
+        MainNavigationRoutesNames.splashScreen: (_) =>
+            screenFactory.makeSplashScreen(),
         MainNavigationRoutesNames.loaderWidget: (_) =>
             screenFactory.makeLoader(),
         MainNavigationRoutesNames.auth: (_) => screenFactory.makeAuth(),

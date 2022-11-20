@@ -38,7 +38,7 @@ class MyApp extends StatelessWidget {
         Locale('en', ''),
       ],
       routes: navigation.routes,
-      initialRoute: MainNavigationRoutesNames.loaderWidget,
+      initialRoute: MainNavigationRoutesNames.splashScreen,
       onGenerateRoute: navigation.onGenerateRoutes,
     );
   }

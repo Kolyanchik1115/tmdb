@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tmdb/domain/api_client/account_api_client.dart';
@@ -24,6 +23,7 @@ import 'package:tmdb/ui/widgets/movie_details/movie_details_widget.dart';
 import 'package:tmdb/ui/widgets/movie_list/movie_list_%20model.dart';
 import 'package:tmdb/ui/widgets/movie_list/movie_list_widget.dart';
 import 'package:tmdb/ui/widgets/movie_trailer/movie_trailer_widget.dart';
+import 'package:tmdb/ui/widgets/splash/splash_screen.dart';
 
 AppFactory makeAppFactory() => _AppFactoryDefault();
 
@@ -103,6 +103,12 @@ class ScreenFactoryDefault implements ScreenFactory {
   const ScreenFactoryDefault(
     this._diContainer,
   );
+  @override
+  Widget makeSplashScreen() {
+    return SplashWidget(
+      navigationAction: _diContainer._mainNavigationAction,
+    );
+  }
 
   @override
   Widget makeLoader() {
