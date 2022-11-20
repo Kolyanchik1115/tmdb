@@ -3,6 +3,7 @@ import 'package:tmdb/config/configuration.dart';
 import 'package:tmdb/domain/api_client/network_client.dart';
 import 'package:tmdb/domain/entity/movie_details.dart';
 import 'package:tmdb/domain/entity/popular_movie_response.dart';
+import 'package:tmdb/domain/entity/popular_tv_response.dart';
 
 abstract class MovieApiClient {
   Future<PopularMovieResponse> popularMovie(
@@ -11,6 +12,17 @@ abstract class MovieApiClient {
     String apiKey,
   );
   Future<PopularMovieResponse> searchMovie(
+    int page,
+    String locale,
+    String query,
+    String apiKey,
+  );
+  Future<PopularTVResponse> popularTVMovie(
+    int page,
+    String locale,
+    String apiKey,
+  );
+  Future<PopularTVResponse> searchTVShow(
     int page,
     String locale,
     String query,
@@ -55,6 +67,30 @@ class MovieApiClientDefault implements MovieApiClient {
   }
 
   @override
+  Future<PopularTVResponse> popularTVMovie(
+    int page,
+    String locale,
+    String apiKey,
+  ) async {
+    PopularTVResponse parser(dynamic json) {
+      final jsonMap = json as Map<String, dynamic>;
+      final response = PopularTVResponse.fromJson(jsonMap);
+      return response;
+    }
+
+    final result = networkClient.get(
+      '/tv/popular',
+      parser,
+      <String, dynamic>{
+        'api_key': apiKey,
+        'page': page.toString(),
+        'language': locale,
+      },
+    );
+    return result;
+  }
+
+  @override
   Future<PopularMovieResponse> searchMovie(
     int page,
     String locale,
@@ -69,6 +105,33 @@ class MovieApiClientDefault implements MovieApiClient {
 
     final result = networkClient.get(
       '/search/movie',
+      parser,
+      <String, dynamic>{
+        'api_key': apiKey,
+        'page': page.toString(),
+        'language': locale,
+        'query': query,
+        'include_adult': true.toString(),
+      },
+    );
+    return result;
+  }
+
+  @override
+  Future<PopularTVResponse> searchTVShow(
+    int page,
+    String locale,
+    String query,
+    String apiKey,
+  ) async {
+    PopularTVResponse parser(dynamic json) {
+      final jsonMap = json as Map<String, dynamic>;
+      final response = PopularTVResponse.fromJson(jsonMap);
+      return response;
+    }
+
+    final result = networkClient.get(
+      '/search/tv',
       parser,
       <String, dynamic>{
         'api_key': apiKey,

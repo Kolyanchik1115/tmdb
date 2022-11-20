@@ -4,14 +4,17 @@ import 'package:tmdb/domain/api_client/account_api_client.dart';
 import 'package:tmdb/domain/api_client/movie_api_client.dart';
 import 'package:tmdb/domain/data_providers/session_data_provider.dart';
 import 'package:tmdb/domain/entity/popular_movie_response.dart';
+import 'package:tmdb/domain/entity/popular_tv_response.dart';
 import 'package:tmdb/domain/local_entity/movie_details_local.dart';
 import 'package:tmdb/ui/widgets/movie_details/movie_details_model.dart';
 import 'package:tmdb/ui/widgets/movie_list/movie_list_%20model.dart';
+import 'package:tmdb/ui/widgets/tv_shows_list/tv_show_model.dart';
 
 class MovieService
     implements
         MovieDetailsModelMovieProvider,
-        MovieMovieListViewModelMoviesProvider {
+        MovieMovieListViewModelMoviesProvider,
+        TVListViewModelMoviesProvider {
   final MovieApiClient movieApiClient;
   final SessionDataProvider sessionDataProvider;
   final AccountApiClient accountApiClient;
@@ -29,11 +32,27 @@ class MovieService
         locale,
         Configuration.apiKey,
       );
+  @override
+  Future<PopularTVResponse> popularTVShow(int page, String locale) async =>
+      movieApiClient.popularTVMovie(
+        page,
+        locale,
+        Configuration.apiKey,
+      );
 
   @override
   Future<PopularMovieResponse> searchMovie(
           int page, String locale, String query) async =>
       movieApiClient.searchMovie(
+        page,
+        locale,
+        query,
+        Configuration.apiKey,
+      );
+  @override
+  Future<PopularTVResponse> searchTVShow(
+          int page, String locale, String query) async =>
+      movieApiClient.searchTVShow(
         page,
         locale,
         query,

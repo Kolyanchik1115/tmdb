@@ -10,6 +10,7 @@ abstract class ScreenFactory {
   Widget makeMovieDetails(int movieId);
   Widget makeMovieTrailer(String youtubeKey);
   Widget makeMovieList();
+  Widget makeTVShowList();
 }
 
 class MainNavigation implements MyAppNavigation {

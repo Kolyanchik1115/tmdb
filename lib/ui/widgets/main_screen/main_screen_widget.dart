@@ -52,7 +52,7 @@ class _MainScreenWidgetState extends State<MainScreenWidget> {
         children: [
           const Center(child: Text('Новости')),
           widget.screenFactory.makeMovieList(),
-          const Center(child: Text('Шоу')),
+          widget.screenFactory.makeTVShowList(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

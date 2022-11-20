@@ -24,6 +24,8 @@ import 'package:tmdb/ui/widgets/movie_list/movie_list_%20model.dart';
 import 'package:tmdb/ui/widgets/movie_list/movie_list_widget.dart';
 import 'package:tmdb/ui/widgets/movie_trailer/movie_trailer_widget.dart';
 import 'package:tmdb/ui/widgets/splash/splash_screen.dart';
+import 'package:tmdb/ui/widgets/tv_shows_list/tv_show_model.dart';
+import 'package:tmdb/ui/widgets/tv_shows_list/tv_show_widget.dart';
 
 AppFactory makeAppFactory() => _AppFactoryDefault();
 
@@ -95,6 +97,9 @@ class _DiContainer {
 
   MovieListViewModel makeMovieListViewModel() =>
       MovieListViewModel(_makeMovieService());
+
+  TVListViewModel makeTVListViewModel() =>
+      TVListViewModel(_makeMovieService());
 }
 
 //factory
@@ -156,6 +161,14 @@ class ScreenFactoryDefault implements ScreenFactory {
     return ChangeNotifierProvider(
       create: (_) => _diContainer.makeMovieListViewModel(),
       child: const MovieListWidget(),
+    );
+  }
+
+  @override
+  Widget makeTVShowList() {
+    return ChangeNotifierProvider(
+      create: (_) => _diContainer.makeTVListViewModel(),
+      child: const TVListWidget(),
     );
   }
 }

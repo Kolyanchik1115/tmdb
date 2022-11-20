@@ -22,14 +22,14 @@ Map<String, dynamic> _$MovieDetailsVideosToJson(MovieDetailsVideos instance) =>
 MovieDetailsVideosResult _$MovieDetailsVideosResultFromJson(
         Map<String, dynamic> json) =>
     MovieDetailsVideosResult(
+      id: json['id'] as String,
       iso6391: json['iso_639_1'] as String,
       iso31661: json['iso_3166_1'] as String,
-      name: json['name'] as String,
       key: json['key'] as String,
+      name: json['name'] as String,
       site: json['site'] as String,
       size: json['size'] as int,
       type: json['type'] as String,
-      id: json['id'] as String,
     );
 
 Map<String, dynamic> _$MovieDetailsVideosResultToJson(
