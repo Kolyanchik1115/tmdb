@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:tmdb/domain/api_client/api_client_exception.dart';
-import 'package:tmdb/domain/entity/movie_details.dart';
+import 'package:tmdb/domain/entity/movies/movie_details.dart';
 import 'package:tmdb/domain/library/localized_model.dart';
 import 'package:tmdb/domain/local_entity/movie_details_local.dart';
 import 'package:tmdb/ui/naviagation/main_navigation_action.dart';
@@ -106,12 +106,6 @@ abstract class MovieDetailsModelMovieProvider {
     required bool isFavorite,
   });
 }
-
-//   Future<void> upateFavorite({
-//     required int movieId,
-//     required bool isFavorite,
-//   });
-// }
 
 class MovieDetailsModel extends ChangeNotifier {
   final MovieDetailsModelLogoutProvider logoutProvider;

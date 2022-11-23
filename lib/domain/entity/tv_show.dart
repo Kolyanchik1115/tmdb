@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first, non_constant_identifier_names
 import 'package:json_annotation/json_annotation.dart';
 
-import 'package:tmdb/domain/entity/movie_date_parser.dart';
+import 'package:tmdb/domain/entity/movies/movie_date_parser.dart';
 
 part 'tv_show.g.dart';
 

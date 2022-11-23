@@ -3,7 +3,7 @@ import 'package:tmdb/config/configuration.dart';
 import 'package:tmdb/domain/api_client/account_api_client.dart';
 import 'package:tmdb/domain/api_client/movie_api_client.dart';
 import 'package:tmdb/domain/data_providers/session_data_provider.dart';
-import 'package:tmdb/domain/entity/popular_movie_response.dart';
+import 'package:tmdb/domain/entity/movies/popular_movie_response.dart';
 import 'package:tmdb/domain/entity/popular_tv_response.dart';
 import 'package:tmdb/domain/local_entity/movie_details_local.dart';
 import 'package:tmdb/ui/widgets/movie_details/movie_details_model.dart';

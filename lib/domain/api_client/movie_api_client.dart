@@ -1,8 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:tmdb/config/configuration.dart';
 import 'package:tmdb/domain/api_client/network_client.dart';
-import 'package:tmdb/domain/entity/movie_details.dart';
-import 'package:tmdb/domain/entity/popular_movie_response.dart';
+import 'package:tmdb/domain/entity/movies/movie_details.dart';
+import 'package:tmdb/domain/entity/movies/popular_movie_response.dart';
 import 'package:tmdb/domain/entity/popular_tv_response.dart';
 
 abstract class MovieApiClient {
