@@ -1,5 +1,5 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:tmdb/domain/entity/tv_show.dart';
+import 'package:tmdb/domain/entity/tv_shows/tv_show.dart';
 
 part 'popular_tv_response.g.dart';
 
