@@ -4,7 +4,7 @@ import 'package:tmdb/domain/api_client/account_api_client.dart';
 import 'package:tmdb/domain/api_client/movie_api_client.dart';
 import 'package:tmdb/domain/data_providers/session_data_provider.dart';
 import 'package:tmdb/domain/entity/movies/popular_movie_response.dart';
-import 'package:tmdb/domain/entity/popular_tv_response.dart';
+import 'package:tmdb/domain/entity/tv_shows/popular_tv_response.dart';
 import 'package:tmdb/domain/local_entity/movie_details_local.dart';
 import 'package:tmdb/ui/widgets/movie_details/movie_details_model.dart';
 import 'package:tmdb/ui/widgets/movie_list/movie_list_%20model.dart';
@@ -60,7 +60,7 @@ class MovieService
       );
 
   @override
-  Future<MovieDetailsLocal> loadDetails({
+  Future<MovieDetailsLocal> loadMovieDetails({
     required int movieId,
     required String locale,
   }) async {
@@ -68,13 +68,13 @@ class MovieService
     final sessionId = await sessionDataProvider.getSessionId();
     var isFavorite = false;
     if (sessionId != null) {
-      isFavorite = await movieApiClient.isFavorite(movieId, sessionId);
+      isFavorite = await movieApiClient.isFavoriteMovie(movieId, sessionId);
     }
     return MovieDetailsLocal(details: movieDetails, isFavorite: isFavorite);
   }
 
   @override
-  Future<void> updateFavorite({
+  Future<void> updateFavoriteMovie({
     required int movieId,
     required bool isFavorite,
   }) async {

@@ -96,12 +96,12 @@ abstract class MovieDetailsModelLogoutProvider {
 }
 
 abstract class MovieDetailsModelMovieProvider {
-  Future<MovieDetailsLocal> loadDetails({
+  Future<MovieDetailsLocal> loadMovieDetails({
     required int movieId,
     required String locale,
   });
 
-  Future<void> updateFavorite({
+  Future<void> updateFavoriteMovie({
     required int movieId,
     required bool isFavorite,
   });
@@ -208,7 +208,7 @@ class MovieDetailsModel extends ChangeNotifier {
 
   Future<void> loadDetails(BuildContext context) async {
     try {
-      final details = await movieProvider.loadDetails(
+      final details = await movieProvider.loadMovieDetails(
           movieId: movieId, locale: _localeStorage.localeTag);
       updateData(details.details, details.isFavorite);
     } on ApiClientException catch (e) {
@@ -221,7 +221,7 @@ class MovieDetailsModel extends ChangeNotifier {
         data.posterData.copyWith(isFavorite: !data.posterData.isFavorite);
     notifyListeners();
     try {
-      await movieProvider.updateFavorite(
+      await movieProvider.updateFavoriteMovie(
           movieId: movieId, isFavorite: data.posterData.isFavorite);
     } on ApiClientException catch (e) {
       _handleApiClientException(e, context);
