@@ -3,7 +3,7 @@ import 'package:tmdb/config/configuration.dart';
 import 'package:tmdb/domain/api_client/network_client.dart';
 import 'package:tmdb/domain/entity/movies/movie_details.dart';
 import 'package:tmdb/domain/entity/movies/popular_movie_response.dart';
-import 'package:tmdb/domain/entity/popular_tv_response.dart';
+import 'package:tmdb/domain/entity/tv_shows/popular_tv_response.dart';
 
 abstract class MovieApiClient {
   Future<PopularMovieResponse> popularMovie(
@@ -32,7 +32,7 @@ abstract class MovieApiClient {
     int movieId,
     String locale,
   );
-  Future<bool> isFavorite(
+  Future<bool> isFavoriteMovie(
     int movieId,
     String sessionId,
   );
@@ -168,7 +168,7 @@ class MovieApiClientDefault implements MovieApiClient {
   }
 
   @override
-  Future<bool> isFavorite(
+  Future<bool> isFavoriteMovie(
     int movieId,
     String sessionId,
   ) async {
