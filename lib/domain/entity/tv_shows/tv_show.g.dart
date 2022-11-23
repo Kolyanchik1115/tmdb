@@ -9,7 +9,7 @@ part of 'tv_show.dart';
 TVShow _$TVShowFromJson(Map<String, dynamic> json) => TVShow(
       posterPath: json['poster_path'] as String?,
       overview: json['overview'] as String,
-      firstAirDate: parseMovieDateFromString(json['first_air_date'] as String?),
+      firstAirDate: parseDateFromString(json['first_air_date'] as String?),
       genre_ids:
           (json['genre_ids'] as List<dynamic>).map((e) => e as int).toList(),
       id: json['id'] as int,

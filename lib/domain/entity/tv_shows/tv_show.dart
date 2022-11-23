@@ -9,7 +9,7 @@ part 'tv_show.g.dart';
 class TVShow {
   final String? posterPath;
   final String overview;
-  @JsonKey(fromJson: parseMovieDateFromString)
+  @JsonKey(fromJson: parseDateFromString)
   final DateTime? firstAirDate;
   final List<int> genre_ids;
   final int id;

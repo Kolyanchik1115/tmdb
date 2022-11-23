@@ -21,7 +21,7 @@ class MovieDetails {
   final String? posterPath;
   final List<ProductionCompanie> productionCompanies;
   final List<ProductionCountrie> productionCountries;
-  @JsonKey(fromJson: parseMovieDateFromString)
+  @JsonKey(fromJson: parseDateFromString)
   final DateTime? releaseDate;
   final int revenue;
   final int? runtime;

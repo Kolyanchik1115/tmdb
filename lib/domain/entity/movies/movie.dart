@@ -8,7 +8,7 @@ class Movie {
   final String? posterPath;
   final bool adult;
   final String overview;
-  @JsonKey(fromJson: parseMovieDateFromString)
+  @JsonKey(fromJson: parseDateFromString)
   final DateTime? releaseDate;
   // ignore: non_constant_identifier_names
   final List<int> genre_ids;
