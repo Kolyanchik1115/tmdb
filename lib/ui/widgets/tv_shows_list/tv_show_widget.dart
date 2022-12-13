@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:tmdb/domain/api_client/image_downloader.dart';
-import 'package:tmdb/ui/widgets/movie_list/movie_list_%20model.dart';
 import 'package:tmdb/ui/widgets/tv_shows_list/tv_show_model.dart';
 
 class TVListWidget extends StatefulWidget {
