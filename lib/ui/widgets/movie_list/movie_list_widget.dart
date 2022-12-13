@@ -160,6 +160,5 @@ class _MovieListRowWidget extends StatelessWidget {
         ],
       ),
     );
-    ;
   }
 }
