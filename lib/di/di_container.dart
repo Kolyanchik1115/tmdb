@@ -30,15 +30,15 @@ import 'package:tmdb/ui/widgets/tv_shows_list/tv_show_widget.dart';
 AppFactory makeAppFactory() => _AppFactoryDefault();
 
 class _AppFactoryDefault implements AppFactory {
-  final _diContainer = _DiContainer();
+  final _diContainer = DiContainer();
 
   _AppFactoryDefault();
   @override
   Widget makeApp() => MyApp(navigation: _diContainer._makeMyAppNavigation());
 }
 
-class _DiContainer {
-  _DiContainer();
+class DiContainer {
+  DiContainer();
 
   //global
   final _mainNavigationAction = const MainNavigationAction();
@@ -104,21 +104,21 @@ class _DiContainer {
 
 //factory
 class ScreenFactoryDefault implements ScreenFactory {
-  final _DiContainer _diContainer;
+  final DiContainer diContainer;
   const ScreenFactoryDefault(
-    this._diContainer,
+    this.diContainer,
   );
   @override
   Widget makeSplashScreen() {
     return SplashWidget(
-      navigationAction: _diContainer._mainNavigationAction,
+      navigationAction: diContainer._mainNavigationAction,
     );
   }
 
   @override
   Widget makeLoader() {
     return Provider(
-      create: (context) => _diContainer.makeLoaderViewModel(context),
+      create: (context) => diContainer.makeLoaderViewModel(context),
       lazy: false,
       child: const LoaderWidget(),
     );
@@ -127,7 +127,7 @@ class ScreenFactoryDefault implements ScreenFactory {
   @override
   Widget makeAuth() {
     return ChangeNotifierProvider(
-      create: (_) => _diContainer._makeAuthViewModel(),
+      create: (_) => diContainer._makeAuthViewModel(),
       child: const AuthWidget(),
     );
   }
@@ -136,15 +136,15 @@ class ScreenFactoryDefault implements ScreenFactory {
   Widget makeMainScreen() {
     return MainScreenWidget(
       screenFactory: this,
-      sessionDataProvider: _diContainer._makeSessionDataProvider(),
-      navigationAction: _diContainer._mainNavigationAction,
+      sessionDataProvider: diContainer._makeSessionDataProvider(),
+      navigationAction: diContainer._mainNavigationAction,
     );
   }
 
   @override
   Widget makeMovieDetails(int movieId) {
     return ChangeNotifierProvider(
-      create: (_) => _diContainer.makeMovieDetailsModel(movieId),
+      create: (_) => diContainer.makeMovieDetailsModel(movieId),
       child: const MovieDetailsWidget(),
     );
   }
@@ -159,7 +159,7 @@ class ScreenFactoryDefault implements ScreenFactory {
   @override
   Widget makeMovieList() {
     return ChangeNotifierProvider(
-      create: (_) => _diContainer.makeMovieListViewModel(),
+      create: (_) => diContainer.makeMovieListViewModel(),
       child: const MovieListWidget(),
     );
   }
@@ -167,7 +167,7 @@ class ScreenFactoryDefault implements ScreenFactory {
   @override
   Widget makeTVShowList() {
     return ChangeNotifierProvider(
-      create: (_) => _diContainer.makeTVListViewModel(),
+      create: (_) => diContainer.makeTVListViewModel(),
       child: const TVListWidget(),
     );
   }
